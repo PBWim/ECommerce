@@ -1,19 +1,14 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-//  <copyright file= "appsettings.json" project="ECommerce">
+//  <copyright file= "Application.cs" project="ECommerce">
 //  Copyright Pabodha Wimalasuriya.
 //  </copyright>
 //  --------------------------------------------------------------------------------------------------------------------
+
+namespace Web.AppSettings
 {
-  "Logging": {
-    "IncludeScopes": false,
-    "LogLevel": {
-      "Default": "Warning"
+    public class Application
+    {
+        public string Name { get; set; }
+        public string Version { get; set; }
     }
-  },
-  "AppSettings": {
-    "Application": {
-      "Name": "ECommerce | Online Deals",
-      "Version": "0.0.1v"
-    }
-  }
 }

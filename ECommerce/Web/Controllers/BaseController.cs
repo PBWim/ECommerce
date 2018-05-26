@@ -1,19 +1,14 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-//  <copyright file= "appsettings.json" project="ECommerce">
+//  <copyright file= "BaseController.cs" project="ECommerce">
 //  Copyright Pabodha Wimalasuriya.
 //  </copyright>
 //  --------------------------------------------------------------------------------------------------------------------
+
+namespace Web.Controllers
 {
-  "Logging": {
-    "IncludeScopes": false,
-    "LogLevel": {
-      "Default": "Warning"
+    using Microsoft.AspNetCore.Mvc;
+
+    public class BaseController : Controller
+    {
     }
-  },
-  "AppSettings": {
-    "Application": {
-      "Name": "ECommerce | Online Deals",
-      "Version": "0.0.1v"
-    }
-  }
 }
