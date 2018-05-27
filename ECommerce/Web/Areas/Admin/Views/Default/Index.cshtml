@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<div class="col-4 mx-auto">
+    <div class="card card-body mb-5 mt-5">
+        <form class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" class="form-control form-control-lg" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" required>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="valid-feedback">
+                    Please enter your email.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="valid-feedback">
+                    Please enter your password.
+                </div>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
