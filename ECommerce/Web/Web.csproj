@@ -38,4 +38,9 @@
     <TypeScriptSourceRoot />
   </PropertyGroup>
 
+  <!-- When project builds main gulp default task is exexuted -->
+  <Target Name="RunGulp" BeforeTargets="Build">
+		<Exec Command="node_modules\.bin\gulp.cmd" />
+  </Target>
+
 </Project>
