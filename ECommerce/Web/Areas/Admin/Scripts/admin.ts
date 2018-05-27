@@ -1,17 +1,22 @@
-﻿class admin {
+﻿"use strict";
+
+class admin {
     constructor() {
-        this.init();
+        a.init();
     }
     init() {
-        var forms = document.getElementsByClassName('needs-validation');
+        a.formSubmitValidation();
+    }
+    formSubmitValidation() {
+        var forms = $('.needs-validation');
         var validation = Array.prototype.filter.call(forms, function (form) {
-            form.addEventListener('submit', function (event) {
+            $('#adminLogin').submit(function (ev) {
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
                 }
                 form.classList.add('was-validated');
-            }, false);
+            });
         });
     }
 }
