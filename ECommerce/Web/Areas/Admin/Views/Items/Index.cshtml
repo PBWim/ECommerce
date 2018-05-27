@@ -1,0 +1,41 @@
+﻿@using Microsoft.Extensions.Options;
+@using Web.AppSettings;
+@inject IOptions<AppSettingsModel> AppSettings
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_ItemLayout.cshtml";
+    ViewData["Title"] = "Item Setup";
+}
+
+<div class="list-group">
+    <a href="/items/main" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Main Selling Categories</h5>
+            <button type="button" class="btn btn-primary">
+                Total <span class="badge badge-light">4</span>
+            </button>
+        </div>
+        <p class="mb-1">Main selling categories on @AppSettings.Value.Application.Name</p>
+        <small>Ex :- Women's Clothing, Men's Clothing, Phones and Accessories</small>
+    </a>
+    <a href="/items/sub" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Main Sub Categories</h5>
+            <button type="button" class="btn btn-primary">
+                Total <span class="badge badge-light">4</span>
+            </button>
+        </div>
+        <p class="mb-1">Main sub categories on @AppSettings.Value.Application.Name</p>
+        <small class="text-muted">Ex:- Women's Clothing has Dresses, Blouses and Shirts, Accessories...</small>
+    </a>
+    <a href="/items/items" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Items</h5>
+            <button type="button" class="btn btn-primary">
+                Total <span class="badge badge-light">4</span>
+            </button>
+        </div>
+        <p class="mb-1">Items on @AppSettings.Value.Application.Name</p>
+        <small class="text-muted">Ex:- T-shirts, Blouses, Denims...</small>
+    </a>
+</div>

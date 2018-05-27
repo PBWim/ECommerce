@@ -1,0 +1,46 @@
+﻿@using Microsoft.Extensions.Options;
+@using Web.AppSettings;
+@inject IOptions<AppSettingsModel> AppSettings
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - @AppSettings.Value.Application.Name</title>
+    @await Html.PartialAsync("_Header")
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/"> @AppSettings.Value.Application.Name </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <div class="nav-item navbar-text">
+                <span>
+                    <a href="/">Log out</a>
+                </span>
+            </div>
+        </div>
+    </nav>
+    <div class="alert alert-light text-right" role="alert">
+        Admin Test User
+    </div>
+    <div class="body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year.ToString() - @AppSettings.Value.Application.Name - @AppSettings.Value.Application.Version</p>
+        </footer>
+    </div>
+    @await Html.PartialAsync("_Footer")
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,10 +1,12 @@
 "use strict";
 var admin = /** @class */ (function () {
     function admin() {
-        a.init();
+        var self = this;
+        self.init();
     }
     admin.prototype.init = function () {
-        a.formSubmitValidation();
+        var self = this;
+        self.formSubmitValidation();
     };
     admin.prototype.formSubmitValidation = function () {
         var forms = $('.needs-validation');
