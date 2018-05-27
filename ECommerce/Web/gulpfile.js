@@ -1,4 +1,5 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+﻿/// <binding Clean='dev-js' />
+// --------------------------------------------------------------------------------------------------------------------
 //  <copyright file= "gulpfile.js" project="ECommerce">
 //  Copyright Pabodha Wimalasuriya.
 //  </copyright>
@@ -6,6 +7,7 @@
 
 "use strict";
 
+// Required gulp commands
 var gulp = require("gulp"),
     rimraf = require("rimraf"), // A Node deletion module
     concat = require("gulp-concat"), // A module that concatenates files based on 
@@ -13,6 +15,7 @@ var gulp = require("gulp"),
     cssmin = require("gulp-cssmin"), // A module that minifies CSS files
     uglify = require("gulp-uglify"); // A module that minifies .js files
 
+// For bootstrap, popper and JQuery
 const vendorStyles = [
     "node_modules/bootstrap/dist/css/bootstrap.min.css"
 ];
@@ -22,6 +25,7 @@ const vendorScripts = [
     "node_modules/bootstrap/dist/js/bootstrap.min.js",
 ];
 
+// For site.css and site.js
 var paths = {
     webroot: "./wwwroot/"
 };
@@ -33,9 +37,10 @@ paths.minCss = paths.webroot + "css/**/*.min.css";
 paths.concatJsDest = paths.webroot + "js/site.min.js";
 paths.concatCssDest = paths.webroot + "css/site.min.css";
 
+// This is the default(First) task runs
 gulp.task('default', ['build-vendor']);
 
-gulp.task('build-vendor', ['build-vendor-css', 'build-vendor-js', 'clean', 'min']);
+gulp.task('build-vendor', ['build-vendor-css', 'build-vendor-js', 'clean', 'min', 'dev']);
 
 gulp.task('build-vendor-css', () => {
     return gulp.src(vendorStyles)
@@ -89,3 +94,23 @@ gulp.task("min:css", function () {
 });
 
 gulp.task("min", ["min:js", "min:css"]);
+
+// --------------------------------------------------------- //
+
+var tsProject;
+gulp.task("dev", function () {
+    var ts = require("gulp-typescript");
+    var sourcemaps = require('gulp-sourcemaps');
+
+    if (!tsProject) {
+        tsProject = ts.createProject("tsconfig.json");
+    }
+
+    var reporter = ts.reporter.fullReporter();
+    var tsResult = tsProject.src()
+        .pipe(sourcemaps.init())
+        .pipe(tsProject(reporter));
+
+    return tsResult.js
+        .pipe(gulp.dest("wwwroot/js/scripts"));
+});
