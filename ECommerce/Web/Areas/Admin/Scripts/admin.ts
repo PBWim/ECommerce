@@ -2,10 +2,12 @@
 
 class admin {
     constructor() {
-        a.init();
+        var self = this;
+        self.init();
     }
     init() {
-        a.formSubmitValidation();
+        var self = this;
+        self.formSubmitValidation();
     }
     formSubmitValidation() {
         var forms = $('.needs-validation');
