@@ -15,7 +15,7 @@ var gulp = require("gulp"),
     cssmin = require("gulp-cssmin"), // A module that minifies CSS files
     uglify = require("gulp-uglify"); // A module that minifies .js files
 
-// For bootstrap, popper and JQcuery
+// For bootstrap, popper and JQuery
 const vendorStyles = [
     "node_modules/bootstrap/dist/css/bootstrap.min.css"
 ];
