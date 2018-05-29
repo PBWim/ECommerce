@@ -1,0 +1,18 @@
+﻿@{ 
+    var _href = ViewData["href"];
+    var _total = ViewData["total"];
+    var _title = ViewData["menuTitle"];
+    var _subTitle = ViewData["subTitle"];
+    var _desc = ViewData["desc"];
+}
+
+<a href="@_href" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">@_title</h5>
+        <button type="button" class="btn btn-secondary">
+            Total <span class="badge badge-light">@_total</span>
+        </button>
+    </div>
+    <p class="mb-1">@_subTitle</p>
+    <small>@_desc</small>
+</a>

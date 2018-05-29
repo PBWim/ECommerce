@@ -15,7 +15,7 @@ var gulp = require("gulp"),
     cssmin = require("gulp-cssmin"), // A module that minifies CSS files
     uglify = require("gulp-uglify"); // A module that minifies .js files
 
-// For bootstrap, popper and JQuery
+// For bootstrap, popper and JQcuery
 const vendorStyles = [
     "node_modules/bootstrap/dist/css/bootstrap.min.css"
 ];
@@ -30,11 +30,11 @@ var paths = {
     webroot: "./wwwroot/"
 };
 
-paths.js = paths.webroot + "js/**/*.js";
-paths.minJs = paths.webroot + "js/**/*.min.js";
+//paths.js = paths.webroot + "js/**/*.js";
+//paths.minJs = paths.webroot + "js/**/*.min.js";
 paths.css = paths.webroot + "css/**/*.css";
 paths.minCss = paths.webroot + "css/**/*.min.css";
-paths.concatJsDest = paths.webroot + "js/site.min.js";
+//paths.concatJsDest = paths.webroot + "js/site.min.js";
 paths.concatCssDest = paths.webroot + "css/site.min.css";
 
 // This is the default(First) task runs
@@ -57,11 +57,11 @@ gulp.task('build-vendor-js', () => {
 // --------------------------------------------------------- //
 
 // Defining Tasks
-gulp.task("clean:js", function (cb) {
-    rimraf(paths.concatJsDest, cb);
-    // A task that uses the rimraf Node deletion module to 
-    // remove the minified version of the site.js file.
-});
+//gulp.task("clean:js", function (cb) {
+//    rimraf(paths.concatJsDest, cb);
+//    // A task that uses the rimraf Node deletion module to 
+//    // remove the minified version of the site.js file.
+//});
 
 // Defining Tasks
 gulp.task("clean:css", function (cb) {
@@ -72,16 +72,17 @@ gulp.task("clean:css", function (cb) {
 
 // Executing defined tasks in order
 // A task that calls the clean:js task, followed by the clean:css task.
-gulp.task("clean", ["clean:js", "clean:css"]);
+//gulp.task("clean", ["clean:js", "clean:css"]);
+gulp.task("clean", ["clean:css"]);
 
-gulp.task("min:js", function () {
-    return gulp.src([paths.js, "!" + paths.minJs], { base: "." })
-        .pipe(concat(paths.concatJsDest))
-        .pipe(uglify())
-        .pipe(gulp.dest("."));
-    // A task that minifies and concatenates all .js 
-    // files within the js folder.The.min.js files are excluded.
-});
+//gulp.task("min:js", function () {
+//    return gulp.src([paths.js, "!" + paths.minJs], { base: "." })
+//        .pipe(concat(paths.concatJsDest))
+//        .pipe(uglify())
+//        .pipe(gulp.dest("."));
+//    // A task that minifies and concatenates all .js 
+//    // files within the js folder.The.min.js files are excluded.
+//});
 
 gulp.task("min:css", function () {
     return gulp.src([paths.css, "!" + paths.minCss])
@@ -93,14 +94,15 @@ gulp.task("min:css", function () {
     // files within the css folder.The.min.css files are excluded.
 });
 
-gulp.task("min", ["min:js", "min:css"]);
+//gulp.task("min", ["min:js", "min:css"]);
+gulp.task("min", ["min:css"]);
 
 // --------------------------------------------------------- //
 
 var tsProject;
 gulp.task("dev", function () {
     var ts = require("gulp-typescript");
-    var sourcemaps = require('gulp-sourcemaps');
+    //var sourcemaps = require('gulp-sourcemaps');
 
     if (!tsProject) {
         tsProject = ts.createProject("tsconfig.json");
@@ -108,7 +110,7 @@ gulp.task("dev", function () {
 
     var reporter = ts.reporter.fullReporter();
     var tsResult = tsProject.src()
-        .pipe(sourcemaps.init())
+        //.pipe(sourcemaps.init())
         .pipe(tsProject(reporter));
 
     return tsResult.js
