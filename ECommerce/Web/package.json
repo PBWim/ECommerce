@@ -2,6 +2,7 @@
   "version": "1.0.0",
   "name": "asp.net",
   "private": true,
+  "_devDependenciesComment": "'devDependencies' : Dependencies you only need during development or releasing, like compilers that take your code and compile it into javascript, test \t\t// frameworks or documentation generators.",
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-concat": "2.6.1",
@@ -12,6 +13,7 @@
     "rimraf": "2.6.1",
     "typescript": "^2.8.3"
   },
+  "_dependenciesComment": "'dependencies' : Dependencies that your project needs to run, like a library that provides functions that you call from your code.",
   "dependencies": {
     "@types/jquery": "^3.3.2",
     "bootstrap": "^4.1.1",
