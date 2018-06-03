@@ -6,8 +6,10 @@
 
 namespace Web
 {
+    using DataAccess;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Web.AppSettings;
@@ -27,6 +29,9 @@ namespace Web
             services.AddMvc();
 
             services.Configure<AppSettingsModel>(Configuration.GetSection("AppSettings"));
+
+            services.AddDbContext<ECommerceDBContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("ECommerceDBConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +59,17 @@ namespace Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            CreateDatabase(app);
+        }
+
+        private void CreateDatabase(IApplicationBuilder app)
+        {
+            using (IServiceScope serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var identityContext = serviceScope.ServiceProvider.GetRequiredService<ECommerceDBContext>();
+                identityContext.Database.Migrate();
+            }
         }
     }
 }
