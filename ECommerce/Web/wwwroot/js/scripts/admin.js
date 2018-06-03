@@ -16,6 +16,10 @@ var admin = /** @class */ (function () {
                     event.preventDefault();
                     event.stopPropagation();
                 }
+                else {
+                    $('#emailVal').val($('#inputEmail').val());
+                    $('#passwordVal').val($('#inputPassword').val());
+                }
                 form.classList.add('was-validated');
             });
         });
