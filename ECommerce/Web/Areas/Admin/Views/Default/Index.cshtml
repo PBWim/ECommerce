@@ -4,10 +4,11 @@
 
 <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
     <div class="card card-body mb-5 mt-5">
-        <form id="adminLogin" class="needs-validation" action="/Items" novalidate>
+        <form id="adminLogin" class="needs-validation" action="/adminlogin" novalidate>
             <div class="form-group">
                 <label for="inputEmail">Email address</label>
                 <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" required>
+                <input type="hidden" id="emailVal" name="email" value="" />
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -18,6 +19,7 @@
             <div class="form-group">
                 <label for="inputPassword">Password</label>
                 <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                <input type="hidden" id="passwordVal" name="password" value="" />
                 <div class="valid-feedback">
                     Looks good!
                 </div>
