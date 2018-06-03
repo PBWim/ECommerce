@@ -17,12 +17,19 @@ namespace Web.Areas.Admin.Controllers
             return View();
         }
 
+        [Route("adminsetup")]
+        public IActionResult AdminSetup()
+        {
+            return View();
+        }
+
         [Route("/adminlogin")]
         public IActionResult AdminLogin(string email, string password)
         {
             if (!string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(password))
             {
-                return RedirectToAction("Index", "Items");
+                return View("AdminSetup");
+                // return RedirectToAction("Index", "Items");
             }
             return BadRequest();
         }
