@@ -6,7 +6,13 @@
 
 namespace Web
 {
+    using BusinessService.Mapper.Admin;
+    using BusinessService.Mapper.Contract.Admin;
+    using BusinessService.Service.Admin;
+    using BusinessService.Service.Contract.Admin;
     using DataAccess;
+    using DataAccess.Repository.Admin;
+    using DataAccess.Repository.Contract.Admin;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;
@@ -32,6 +38,8 @@ namespace Web
 
             services.AddDbContext<ECommerceDBContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("ECommerceDBConnection")));
+
+            AddTransient(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,6 +78,14 @@ namespace Web
                 var identityContext = serviceScope.ServiceProvider.GetRequiredService<ECommerceDBContext>();
                 identityContext.Database.Migrate();
             }
+        }
+
+        private void AddTransient(IServiceCollection services)
+        {
+            services.AddTransient<IAdminModelMapper, AdminModelMapper>();
+            services.AddTransient<IAdminService, AdminService>();
+            services.AddTransient<IAdminRepository, AdminRepository>();
+            services.AddTransient<Areas.Admin.Mappers.Contracts.Admin.IAdminModelMapper, Areas.Admin.Mappers.Admin.AdminModelMapper>();
         }
     }
 }
