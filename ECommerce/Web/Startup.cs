@@ -60,10 +60,10 @@ namespace Web
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            CreateDatabase(app);
+            MigrateDatabase(app);
         }
 
-        private void CreateDatabase(IApplicationBuilder app)
+        private void MigrateDatabase(IApplicationBuilder app)
         {
             using (IServiceScope serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
