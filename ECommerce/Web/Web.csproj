@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="Areas\Admin\Scripts\admin.ts" />
+    <None Remove="Areas\Admin\Scripts\adminSetUp.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,15 +25,16 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BusinessService\BusinessService.csproj" />
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="Areas\Admin\Scripts\admin.ts" />
+    <TypeScriptCompile Include="Areas\Admin\Scripts\adminSetUp.ts" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
