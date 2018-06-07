@@ -41,8 +41,8 @@ namespace Web
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
+            WebHost.CreateDefaultBuilder(args) // builder pattern creates a web application host (The WebHost.CreateDefaultBuilder method sets the content root to the current directory as the host root)
+                .UseStartup<Startup>() // The UseStartup method on WebHostBuilder specifies the Startup class for your app
                 .Build();
     }
 }

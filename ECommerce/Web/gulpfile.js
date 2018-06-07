@@ -5,6 +5,8 @@
 //  </copyright>
 //  --------------------------------------------------------------------------------------------------------------------
 
+// GULP : ask/build runner for development which can compile sass files, uglify and compress js files
+
 "use strict";
 
 // Required gulp commands
@@ -102,6 +104,10 @@ gulp.task("min", ["min:css"]);
 var tsProject;
 gulp.task("dev", function () {
     var ts = require("gulp-typescript");
+    // A source map provides a way of mapping code within a compressed file back to 
+    // it’s original position in a source file.This means that – 
+    // with the help of a bit of software – you can easily debug your 
+    // applications even after your assets have been optimized
     //var sourcemaps = require('gulp-sourcemaps');
 
     if (!tsProject) {

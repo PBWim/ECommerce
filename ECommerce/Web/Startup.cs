@@ -22,12 +22,12 @@ namespace Web
 
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -55,6 +55,10 @@ namespace Web
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            // Static files, such as HTML, CSS, images, and JavaScript, are assets an 
+            // ASP.NET Core app serves directly to clients. 
+            // Some configuration is required to enable to serving of these files.
+            // Eg : In wwwroot/css, images, js
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
@@ -82,6 +86,8 @@ namespace Web
 
         private void AddTransient(IServiceCollection services)
         {
+            // Registering services in DI container
+            // Eg : everytime you request a type of IAdminService, you'll get a new instance of the AdminService
             services.AddTransient<IAdminModelMapper, AdminModelMapper>();
             services.AddTransient<IAdminService, AdminService>();
             services.AddTransient<IAdminRepository, AdminRepository>();
