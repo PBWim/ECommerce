@@ -1,4 +1,5 @@
 {
+  "description": "npm : package installation, version management, and dependency management | package.json : lists the packages that your project depends on (with versions)",
   "version": "1.0.0",
   "name": "asp.net",
   "private": true,

@@ -11,12 +11,14 @@ namespace DataAccess.Repository.Admin
     using DataAccess.Models.Admin;
     using DataAccess.Repository.Contract.Admin;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Logging;
 
     public class AdminRepository : IRepository<AdminUser>, IAdminRepository
     {
-        public AdminRepository(ECommerceDBContext context)
+        public AdminRepository(ECommerceDBContext context, ILogger<AdminRepository> logger)
         {
             this.context = context;
+            this.logger = logger;
             entity = context.Set<AdminUser>();
         }
                
