@@ -35,8 +35,10 @@ namespace Web.Areas.Admin.Controllers
         [Route("adminsetup")]
         public IActionResult AdminSetup()
         {
-            logger.LogInformation("Admin SetUp");
-            return View();
+            logger.LogInformation("Get all admin users");
+            var result = adminService.GetAdminUsers();
+            var model = adminModelMapper.Map(result);
+            return View(model);
         }
 
         [HttpPost]
@@ -46,8 +48,7 @@ namespace Web.Areas.Admin.Controllers
             if (!string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(password))
             {
                 logger.LogInformation($"Admin login of {email}");
-                return View("AdminSetup");
-                // return RedirectToAction("Index", "Items");
+                return RedirectToAction("adminsetup", "Default");
             }
             logger.LogError("Invalid admin login");
             return BadRequest();
@@ -72,7 +73,7 @@ namespace Web.Areas.Admin.Controllers
                 var result = adminService.CreateAdminUser(adminModelMapper.Map(adminModel));
                 if (result)
                 {
-                    return View("AdminSetup");
+                    return RedirectToAction("adminsetup", "Default");
                 }
                 logger.LogError($"Invalid admin user create {userName}");
                 return BadRequest();

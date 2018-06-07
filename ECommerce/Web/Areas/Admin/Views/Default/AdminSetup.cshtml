@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Web.Areas.Admin.Models;
+@model IEnumerable<AdminUser>;
+@{
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Admin Configuration";
 }
@@ -60,6 +62,27 @@
         </div>
     </div>
 </div>
+
+<ul class="container list-group list-group-flush pt-lg-3">
+    @foreach (var item in Model)
+    {
+        <a href="#" class="list-group-item-action">
+            <li class="list-group-item">
+                <div class="row col-12">
+                    <div class="col-10">
+                        @item.UserName <br />
+                        <small>@item.Email</small><br />
+                        <small>@item.Telephone</small>
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-dark">Edit</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </li>
+        </a>
+    }
+</ul>
 
 @section Scripts{
     <environment include="Development">

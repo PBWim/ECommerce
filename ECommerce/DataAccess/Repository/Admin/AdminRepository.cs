@@ -25,7 +25,7 @@ namespace DataAccess.Repository.Admin
         public IEnumerable<AdminUser> GetAdminUsers()
         {
             logger.LogInformation("Get all admin users");
-            return entity.AsEnumerable();
+            return entity.AsEnumerable().Where(x=> x.Id != 1);
         }
 
         public AdminUser GetAdminUser(int id)
