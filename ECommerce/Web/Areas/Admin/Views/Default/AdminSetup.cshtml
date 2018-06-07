@@ -63,18 +63,18 @@
     </div>
 </div>
 
-<ul class="container list-group list-group-flush pt-lg-3">
+<ul class="container list-group list-group-flush pt-lg-3 pt-sm-5">
     @foreach (var item in Model)
     {
         <a href="#" class="list-group-item-action">
             <li class="list-group-item">
-                <div class="row col-12">
-                    <div class="col-10">
+                <div class="row col-md-12">
+                    <div class="col-md-10 col-sm-12">
                         @item.UserName <br />
                         <small>@item.Email</small><br />
                         <small>@item.Telephone</small>
                     </div>
-                    <div class="col-2">
+                    <div class="col-md-2 col-sm-12">
                         <button type="button" class="btn btn-dark">Edit</button>
                         <button type="button" class="btn btn-danger">Delete</button>
                     </div>
