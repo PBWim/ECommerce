@@ -24,15 +24,18 @@ namespace DataAccess.Repository.Admin
                
         public IEnumerable<AdminUser> GetAdminUsers()
         {
-            return entity.AsEnumerable();
+            logger.LogInformation("Get all admin users");
+            return entity.AsEnumerable().Where(x=> !x.IsSuperAdmin);
         }
 
         public AdminUser GetAdminUser(int id)
         {
             if (id == 0)
             {
+                logger.LogError($"GetAdminUser id is zero {id}");
                 return null;
             }
+            logger.LogInformation($"GetAdminUser details of {id}");
             return entity.AsEnumerable().Where(x => x.Id == id).FirstOrDefault();
         }
 
@@ -42,8 +45,10 @@ namespace DataAccess.Repository.Admin
                 string.IsNullOrWhiteSpace(adminUser.Email) ||
                 string.IsNullOrWhiteSpace(adminUser.PasswordHash))
             {
+                logger.LogError($"CreateAdminUser UserName {adminUser.UserName}  or Email {adminUser.Email} or PasswordHash {adminUser.PasswordHash} is null");
                 return false;
             }
+            logger.LogInformation($"CreateAdminUser of {adminUser.UserName}");
             context.Entry(adminUser).State = EntityState.Added;
             return context.SaveChanges() > 0;
         }
@@ -52,8 +57,10 @@ namespace DataAccess.Repository.Admin
         {
             if (adminUser.Id == 0)
             {
+                logger.LogError($"UpdateAdminUser of id {adminUser.Id} is null");
                 return false;
             }
+            logger.LogInformation($"UpdateAdminUser of {adminUser.UserName}");
             return context.SaveChanges() > 0;
         }
 
@@ -61,9 +68,11 @@ namespace DataAccess.Repository.Admin
         {
             if (id == 0)
             {
+                logger.LogError($"DeleteAdminUser of id {id} is null");
                 return false;
             }
             AdminUser adminUser = GetAdminUser(id);
+            logger.LogInformation($"DeleteAdminUser of {adminUser.UserName}");
             entity.Remove(adminUser);
             return context.SaveChanges() > 0;
         }

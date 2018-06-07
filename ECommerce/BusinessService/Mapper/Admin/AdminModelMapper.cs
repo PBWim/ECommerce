@@ -47,12 +47,22 @@ namespace BusinessService.Mapper.Admin
 
         public IEnumerable<BO.AdminUser> Map(IEnumerable<RO.AdminUser> adminUser)
         {
-            throw new NotImplementedException();
+            List<BO.AdminUser> adminUserList = new List<BO.AdminUser>();
+            foreach (var item in adminUser)
+            {
+                adminUserList.Add(Map(item));
+            }
+            return adminUserList;
         }
 
         public IEnumerable<RO.AdminUser> Map(IEnumerable<BO.AdminUser> adminUser)
         {
-            throw new NotImplementedException();
+            List<RO.AdminUser> adminUserList = new List<RO.AdminUser>();
+            foreach (var item in adminUser)
+            {
+                adminUserList.Add(Map(item));
+            }
+            return adminUserList;
         }
 
         private string GetHashPassowrd(string rawPassword)
