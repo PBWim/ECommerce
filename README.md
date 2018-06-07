@@ -11,3 +11,5 @@ https://docs.microsoft.com/en-us/aspnet/core/security/authorization/claims?view=
 
 http://l-knowtech.com/2017/09/12/repository-pattern-asp-net-core-mvc-entity-framework-core/
 
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&tabs=aspnetcore2x#how-to-create-logs
+
