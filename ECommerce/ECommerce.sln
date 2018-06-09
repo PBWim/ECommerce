@@ -7,7 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{6AA48BF1-BDD8-49FC-B16A-3FA299F9C4D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessService", "BusinessService\BusinessService.csproj", "{4A901921-E0A4-44A7-890C-80305B4DF6B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessService", "BusinessService\BusinessService.csproj", "{4A901921-E0A4-44A7-890C-80305B4DF6B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{531C32B6-CA95-4E0C-9A46-2BB14A4CA042}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 Deployable", "1 Deployable", "{A32AB2E4-0930-4826-93F4-BC7880C2A3BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 Business Services", "3 Business Services", "{15953C0C-9F97-4CE8-89B1-52D31461193A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 Data Services", "2 Data Services", "{1EDC204D-0E3A-4A20-9888-6CFD67743F9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +38,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8C201734-69EC-498B-9606-A4E235837FF2} = {A32AB2E4-0930-4826-93F4-BC7880C2A3BD}
+		{6AA48BF1-BDD8-49FC-B16A-3FA299F9C4D6} = {1EDC204D-0E3A-4A20-9888-6CFD67743F9E}
+		{4A901921-E0A4-44A7-890C-80305B4DF6B6} = {15953C0C-9F97-4CE8-89B1-52D31461193A}
+		{A32AB2E4-0930-4826-93F4-BC7880C2A3BD} = {531C32B6-CA95-4E0C-9A46-2BB14A4CA042}
+		{15953C0C-9F97-4CE8-89B1-52D31461193A} = {531C32B6-CA95-4E0C-9A46-2BB14A4CA042}
+		{1EDC204D-0E3A-4A20-9888-6CFD67743F9E} = {531C32B6-CA95-4E0C-9A46-2BB14A4CA042}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7F658275-ACA3-4F67-BBCA-FF0BEC442DB5}
